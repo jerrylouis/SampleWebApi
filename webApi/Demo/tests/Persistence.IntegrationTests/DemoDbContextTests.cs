@@ -3,6 +3,7 @@ using Demo.Domain.Entities;
 using Demo.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using Shouldly;
 using System;
 using System.Threading.Tasks;
 using Xunit;
@@ -53,8 +54,8 @@ namespace Persistence.IntegrationTests
             dbContext.Users.Add(user);
             await dbContext.SaveChangesAsync();
 
-            user.FirstName.Equals("James");
-            user.CreatedDate.Equals(dateTime);
+            user.FirstName.ShouldBe("James");
+            user.CreatedDate.ShouldBe(dateTime);
         }
 
         [Fact]
@@ -62,9 +63,10 @@ namespace Persistence.IntegrationTests
         {
             var user = await dbContext.Users.FindAsync(1);
 
-            user.FirstName.Equals("Jack");
-            user.LastName.Equals("Reacher");
-            user.CreatedDate.Equals(dateTime);
+            user.ShouldBeOfType<User>();
+            user.FirstName.ShouldBe("Jack");
+            user.LastName.ShouldBe("Reacher");
+            user.CreatedDate.ShouldBe(dateTime);
         }
     }
 }
