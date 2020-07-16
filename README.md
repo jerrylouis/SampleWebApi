@@ -10,9 +10,8 @@ The entry point to the project is WebUI (in the presentation layer), running tha
 	- Infrastructure has Persistence layer - we use SqlLite (InMemory Database for testing), also includes migrations
 	- Presentation has WebUI - the entry point into this application which includes a simple client app that uses Angular
 	- Includes swagger UI for documentation and some basic web api testing
-- Bank: BankService simulates that authorization of payments, checks basic card information. 
 - Test project contains some unit testing and integration testing for both data storage and WebUI
-- Dockerfile generated for the WebI api project.  
+- Added some unit tests using Jasmine/Karma for the client app
 
 ## Pre-requisite to run the project 
 
