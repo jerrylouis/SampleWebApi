@@ -1,5 +1,5 @@
 # SampleWebApi
-This is a sample web api with angular client app project that adds a user's first and last name to the databse. Includes a swagger/UI for documentation and to try out the api endpoints.
+This is a sample web api with angular client app that adds a user's first and last name to the databse. Includes a swagger/UI for documentation and to try out the api endpoints.
 
 The entry point to the project is WebUI (in the presentation layer), running that should launch the client appp in the browser: http://localhost
 
