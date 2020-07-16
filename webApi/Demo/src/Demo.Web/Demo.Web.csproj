@@ -28,6 +28,11 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\user\add-user.component.ts" />
     <None Remove="ClientApp\src\models\user-model.ts" />
+    <None Remove="ClientApp\tsconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
