@@ -1,7 +1,7 @@
 import { Component, Input, Inject } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
-import { stringify } from "@angular/compiler/src/util";
+import { User } from "../../models/user-model";
 
 @Component({
   selector: 'app-add-user',

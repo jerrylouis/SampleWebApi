@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\user\add-user.component.spec.ts" />
     <None Remove="ClientApp\src\app\user\add-user.component.ts" />
     <None Remove="ClientApp\src\models\user-model.ts" />
     <None Remove="ClientApp\tsconfig.json" />
@@ -41,8 +42,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\add-user.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\user\add-user.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\models\user-model.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\tests\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
