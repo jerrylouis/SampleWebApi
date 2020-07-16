@@ -23,6 +23,12 @@ namespace Demo.Infrastructure.Persistence
         { 
         }
 
+        public DemoDbContext(DbContextOptions<DemoDbContext> options, IDateTime dateTime)
+           : base(options)
+        {
+            this.dateTime = dateTime;
+        }
+
         public DbSet<User> Users { get; set; }
 
         Task<int> IDemoDbContext.SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

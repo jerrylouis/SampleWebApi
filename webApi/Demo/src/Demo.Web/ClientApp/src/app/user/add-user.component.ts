@@ -1,6 +1,7 @@
 import { Component, Input, Inject } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
+import { stringify } from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-add-user',
@@ -29,7 +30,10 @@ import { HttpClient } from "@angular/common/http";
       </div>
 
       <button [disabled]="f.invalid" type="submit" class="btn btn-primary">Submit</button>
-      <div *ngIf="submitted && success" class="mt-2 alert alert-success">Details submitted successfully!</div>
+      <div *ngIf="submitted && success" class="mt-2 alert alert-success">Details submitted successfully!
+        <p class="pt-2"></p>
+        <pre>Result:  {{result}}</pre>
+      </div>
       <div *ngIf="submitted && !success" class="mt-2 alert alert-danger">Unable to submit details, please try again.</div>
     </form>
 
@@ -41,12 +45,12 @@ export class AddUserComponent {
     firstName: '',
     lastName: '',
   };
-  baseUrl: string = '';
+
   success: boolean = false;
   submitted: boolean = false;
+  result: string = '';
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseUrl = baseUrl;
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
   }
 
   onSubmit(f: NgForm) {
@@ -55,6 +59,8 @@ export class AddUserComponent {
         if (result) {
           this.success = true;
           this.submitted = true;
+          result.createdDate = new Date(result.createdDate).toString();
+          this.result = JSON.stringify(result, undefined, 2).trim();
         }
       }, error => console.error(error));
     }
